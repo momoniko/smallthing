@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            background: #60afe4;
+        }
+        
+        #jsq {
+            margin: 100px auto;
+            top: 50%;
+            width: 280px;
+            height: 450px;
+            background: #f4f1f4;
+            border-radius: 12px;
+        }
+        
+        #kong {
+            width: 100%;
+            height: 50px;
+        }
+        
+        #shuru {
+            width: 100%;
+            height: 50px;
+            /*  background: rgb(89, 0, 255);*/
+        }
+        
+        #shuru input {
+            width: 97%;
+            height: 50px;
+            background: #f4f1f4;
+            border: 1px solid #f4f1f4;
+            text-align: right;
+            color: #60afe4;
+            font-size: 20px;
+        }
+        
+        #anniu {
+            width: 100%;
+            height: 330px;
+            background: #f4f1f4;
+            float: left;
+        }
+        
+        #anniu li {
+            list-style-type: none;
+            float: left;
+        }
+        
+        #anniu .an1 {
+            width: 50px;
+            height: 50px;
+            background: rgb(255, 255, 255);
+            margin: 5px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #60afe4;
+        }
+        
+        #anniu .an2 {
+            width: 108px;
+            height: 50px;
+            background: #60afe4;
+            margin: 5px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            text-align: center;
+            color: #ffffff;
+            line-height: 50px;
+        }
+        
+        #anniu .zong {
+            position: relative;
+            left: -22px;
+        }
+        
+        #anniu .an3 {
+            width: 50px;
+            height: 50px;
+            background: #60afe4;
+            margin: 5px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #ffffff;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="jsq">
+        <div id="kong"></div>
+        <div id="shuru">
+            <input type="text" id="shu">
+        </div>
+        <div id="anniu">
+            <ul class="zong">
+                <li class="an1" onclick="qingkong()">c</li>
+                <li class="an1" onclick="zfh()">z</li>
+                <li class="an1" onclick="tui()">s</li>
+                <li class="an3" onclick="anshu('/')">÷</li>
+                <li class="an1" onclick="anshu('7')">7</li>
+                <li class="an1" onclick="anshu('8')">8</li>
+                <li class="an1" onclick="anshu('9')">9</li>
+                <li class="an3" onclick="anshu('*')">x</li>
+                <li class="an1" onclick="anshu('4')">4</li>
+                <li class="an1" onclick="anshu('5')">5</li>
+                <li class="an1" onclick="anshu('6')">6</li>
+                <li class="an3" onclick="anshu('-')">-</li>
+                <li class="an1" onclick="anshu('1')">1</li>
+                <li class="an1" onclick="anshu('2')">2</li>
+                <li class="an1" onclick="anshu('3')">3</li>
+                <li class="an3" onclick="anshu('+')">+</li>
+                <li class="an1" onclick="anshu('0')">0</li>
+                <li class="an1" onclick="anshu('.')">.</li>
+                <li class="an2" onclick="dengyu()">=</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function anshu(shuzi) {
+            /*VALUE  将字符串转换为数字*/
+            var shuchu = document.getElementById('shu').value;
+            //document.getElementById('shu').value += shuzi;
+            document.getElementById('shu').value += shuzi;
+        }
+
+        function dengyu() {
+            var shuchu = document.getElementById('shu').value;
+            var jieguo = eval(shuchu);
+            /* EVAL这是js 提供计算表单式1+1 一个函数*/
+            // document.getElementById('shu').value += '=' + jieguo;
+            document.getElementById('shu').value = jieguo;
+        }
+
+        function qingkong() {
+            var shuchu = document.getElementById('shu').value;
+            document.getElementById('shu').value = '';
+        }
+
+        function tui() {
+            var tg = document.getElementById('shu');
+            tg.value = tg.value.substring(0, tg.value.length - 1);
+        }
+
+        function zfh() {
+            var zfh = document.getElementById('shu').value;
+            if (zfh.charCodeAt(0) == 45) {
+                document.getElementById('shu').value = zfh.substr(1, zfh.length);
+            } else {
+                document.getElementById('shu').value = '-' + zfh;
+            }
+        }
+    </script>
+</body>
+
+</html>
